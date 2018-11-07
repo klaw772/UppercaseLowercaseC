@@ -1,0 +1,15 @@
+Assignmen 3 - Due Tuesday November 6, 2018.
+
+Write a C program that takes a text file as an input file (this could be your 
+Keyboard input)
+
+and processes the input file as follows: 
+
+1. For every first and last character of a word of length >1 
+	change to upper case if it is lower case or the other way around
+
+2. Copy words that begin with a vowel and paste them in a new file
+
+
+
+
