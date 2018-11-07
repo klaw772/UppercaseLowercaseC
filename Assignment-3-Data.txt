@@ -4,10 +4,7 @@ a
 AS
 AN
 InpuT
-Input)
-
-2
-AnD
+InpuT
 InpuT
 AS
 EverY
@@ -21,9 +18,7 @@ IT
 IS
 OR
 OtheR
-Around
-
-b2.
+ArounD
 a
 AnD
 IN
