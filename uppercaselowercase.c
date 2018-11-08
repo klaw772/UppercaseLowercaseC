@@ -2,75 +2,66 @@
 //CS373 - Operating Systems
 //Uppercase and Lowercase Converter and Vowel splitWord Counter
 
-#include <stdio.h> //importing necessary libraries
-#include <stdlib.h> // I guess
-#include <string.h> //dis 4 dem strangggggs
+//importing necessary libraries
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 #include <ctype.h>
 
 
 int main(){
   char c;
-  FILE *inputptr = fopen("AssignmentThree-O-S-Fall2018.txt", "r");
-  FILE *outputptr = fopen("Assignment-3-Data.txt", "w");
-  char str[10000] = "";
+  FILE *inputptr = fopen("AssignmentThree-O-S-Fall2018.txt", "r"); //opens input file
+  FILE *outputptr = fopen("Assignment-3-Data.txt", "w"); //creates output file
+  char str[10000] = ""; //empty string array to hold input file contents
   int count = 0;
-  while ((c=fgetc(inputptr))!=EOF) {
+  while ((c=fgetc(inputptr))!=EOF) { //traverses and places input into array
     str[count] = c; // this needs to be replaced with function to read from file
     count++;
   }
   printf("%s\n", str);
-  char *splitWord = strtok(str, " ");
+  char *splitWord = strtok(str, " "); //creates substring of str from a character to a space
 
 
     while(splitWord != NULL) {
       if (strlen(splitWord) > 1) //if length of word is greater than 1
         {
-          for (int i = 0; i < strlen(splitWord); i++)
+          for (int i = 0; i < strlen(splitWord); i++) //traverses across word
           {
-            if (i == 0 || i == strlen(splitWord) - 1)
+            if (i == 0 || i == strlen(splitWord) - 1) //only changes first and last char
             {
-              if (splitWord[i] >= 'a' && splitWord[i] <= 'z')
+              if (splitWord[i] >= 'a' && splitWord[i] <= 'z') //if lowercase
               {
-                splitWord[i] = splitWord[i] - 32;
+                splitWord[i] = splitWord[i] - 32; //make it uppercase using ASCII
               }
-              else if (splitWord[i] >= 'A' && splitWord[i] <= 'Z')
+              else if (splitWord[i] >= 'A' && splitWord[i] <= 'Z') //if uppercase
               {
-                splitWord[i] = splitWord[i] + 32;
+                splitWord[i] = splitWord[i] + 32; //make it lowercase using ASCII
               }
-              printf("%c", splitWord[i]);
+              printf("%c", splitWord[i]); //print the new modified character
             }
-            else
+            else //if not first or last character
             {
-              printf("%c", splitWord[i]);
+              printf("%c", splitWord[i]); //print the unchanged character
             }
           }
       }
-      else {
-        printf("%c", splitWord[0]);
+      else { //if length equals 1
+        printf("%c", splitWord[0]); //print the single character
       }
-      if (splitWord[0] == 'a' || splitWord[0] == 'A' ||
+      if (splitWord[0] == 'a' || splitWord[0] == 'A' || //if vowel
       splitWord[0] == 'e' || splitWord[0] == 'E' ||
       splitWord[0] == 'i' || splitWord[0] == 'I' ||
       splitWord[0] == 'o' || splitWord[0] == 'O' ||
       splitWord[0] == 'u' || splitWord[0] =='U')
       {
-        fprintf (outputptr, "%s\n", splitWord);
+        fprintf (outputptr, "%s\n", splitWord); //print token to output file
       }
       printf(" ");
-      splitWord = strtok(NULL, " ");
+      splitWord = strtok(NULL, " "); //traverse to the next token
     }
 
-  fclose(inputptr);
-  fclose(outputptr);
+  fclose(inputptr); //close input file
+  fclose(outputptr); //close output file
   return 0;
 }
-
-
-//**  **//
-//while (word length > 1)
-  //while next character in word isn't null
-  //if the letter is uppercase, make it lowercase
-  //else if the letter is lowercase, make it uppercase
-  //else continue
-  //if this word starts with a vowel, copy it to another file
-//print word to console
